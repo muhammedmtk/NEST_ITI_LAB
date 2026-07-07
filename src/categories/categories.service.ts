@@ -4,7 +4,7 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Injectable()
 export class CategoriesService {
-    private categories = [
+  private categories: { id: number; name: string; description?: string }[] = [
     { id: 1, name: 'Electronics', description: 'Electronic items' },
     { id: 2, name: 'Books', description: 'Reading materials' },
   ];
@@ -20,6 +20,7 @@ export class CategoriesService {
     if(!category){
         throw new NotFoundException('category not found');
     }
+    return category;
   }
 
   create(dto: CreateCategoryDto){
